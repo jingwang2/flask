@@ -1,0 +1,29 @@
+
+<h2>
+    <div class= 'row'>
+        <div class="col-md-6">
+                {{report.reportname}}
+        </div>
+    </div>
+</h2>
+<h5>
+    <div class= 'row'>
+        <div class="col-md-8">
+                Date:{{report.reportdate.strftime("%d/%m/%Y")}}  &nbsp;&nbsp;&nbsp;&nbsp; Offshore Construction Manager:{{report.reportoffshoreconstructionmanager}}
+                       <div class= 'row'>
+                           <div class="col-md-8">
+                               {% for task in report.reporttasks %}
+                                   <ul>
+                                     <li>  {{ task.reporttaskname }} &nbsp; Start time:{{ task.reporttasktimestart.strftime("%H:%M")}} &nbsp; End time: {{ task.reporttasktimeend.strftime("%H:%M") }} &nbsp;
+                                      Dur time : {{ task.reporttasktimedur }}
+                                     </li>
+                                   </ul>
+                               {% endfor %}
+                           </div>
+                       </div>
+        </div>
+    </div>
+</h5>
+<form method="post">
+    <input type="submit" name="submit_button" value="Download PDF">
+</form>

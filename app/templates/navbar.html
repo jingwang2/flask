@@ -1,0 +1,32 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <h4>Bourbon Daily Report System </h4>
+        </a>
+    </div>
+
+    <div class="navbar-collapse collapse flex-grow-1 justify-content-center">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+            </li>
+            </br>
+            {% if not current_user.is_authenticated %}
+            
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('register')}}">Register</a>
+                </li>
+                </br>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('login')}}">Login</a>
+                </li>
+                </br>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('logout')}}">Logout</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+      
+</nav>

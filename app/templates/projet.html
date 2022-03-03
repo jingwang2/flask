@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <img src="static/pic/projet.png" alt="" width="250" height="50" class="">
+    <br>
+    <h1> Exist Projet List </h1>
+    <h2>
+        <div class= 'row'>
+            <div class="col-md-6">
+                {% for projet in Projets %}
+                    <ul>
+                      <li> <a href="{{url_for('projet_report',projetname=projet.projetname)}}"> {{projet.projetname}} </a> </li>
+                    </ul>
+                {% endfor %}   
+            </div>
+        </div>
+    </h2>
+    <br>
+    <br>
+    <div class = 'row'>
+        <div class="col-md-6">
+            {% import 'bootstrap/wtf.html' as wtf %}
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <h1> {{ projet.projetname }} </h1>
+    <br>
+    <h1> Exist Report List </h1>
+    <br>
+    <h2>
+        <div class= 'row'>
+            <div class="col-md-8">
+                {% for report in reports %}
+                    <ul>
+                      <li>  <a href="{{url_for('report',reportname=report.reportname)}}"> {{report.reportname}} </a> 
+                            &nbsp;&nbsp;
+                            <a href="{{url_for('report_task',reportname=report.reportname)}}"> Add Events to {{report.reportname}}  </a> 
+                      </li>
+                    </ul>
+                {% endfor %}   
+            </div>
+        </div>
+    </h2>
+    <div class = 'row'>
+        <div class="col-md-6">
+            {% import 'bootstrap/wtf.html' as wtf %}
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+    <br>
+
+
+{% endblock %}

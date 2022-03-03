@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <h1> Exist Task List For {{report.reportname}} </h1>
+    <h2>
+        <div class= 'row'>
+            <div class="col-md-6">
+                {% for task in tasks %}
+                    <ul>
+                      <li> {{task.reporttaskname}} {{task.reporttasktimestart.strftime("%H:%M")}} {{task.reporttasktimeend.strftime("%H:%M")}} </li>
+                    </ul>
+                {% endfor %}   
+            </div>
+        </div>
+    </h2>
+    <br>
+    <br>
+    <div class = 'row'>
+        <div class="col-md-6">
+            {% import 'bootstrap/wtf.html' as wtf %}
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+    <br>
+    <h1> <a href="{{url_for('projet_report',projetname=report.projet.projetname)}}"> Return to  {{report.reportname}} </a> </h1>
+{% endblock %}
